@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+	public GameObject ProjectilePrefab;
 	// Use this for initialization
 	void Start () {
 	
