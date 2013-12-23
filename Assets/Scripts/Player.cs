@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public GameObject monster;
-
 	// Use this for initialization
 	void Start () {
 	
