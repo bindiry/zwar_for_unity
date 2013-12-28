@@ -17,5 +17,20 @@ public class Projectile : MonoBehaviour {
 		{
 			transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
 		}
+
+		if (this.transform.position.x >= Screen.width + this.renderer.bounds.size.x / 2)
+		{
+			Destroy(this.gameObject);
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		if (collider.gameObject.name == "Monster(Clone)")
+		{
+			Destroy(collider.gameObject);
+			Destroy(this.gameObject);
+		}
+
 	}
 }

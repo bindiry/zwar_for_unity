@@ -7,7 +7,8 @@ public class Monster : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		moveSpeed = Random.Range (50, 100);
+		moveSpeed = Random.Range (50, 100) + Time.time * 2;
+		print (Time.time);
 	}
 
 	// Update is called once per frame
@@ -15,9 +16,9 @@ public class Monster : MonoBehaviour
 	{
 		transform.Translate (-moveSpeed * Time.deltaTime, 0, 0);
 		
-		if (transform.position.x < -renderer.bounds.size.x / 2)
+		if (transform.position.x <= -this.renderer.bounds.size.x / 2)
 		{
-			Destroy(this);
+			Destroy(this.gameObject);
 		}
 	}
 }
