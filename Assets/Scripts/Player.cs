@@ -37,7 +37,5 @@ public class Player : MonoBehaviour {
 
 		Projectile p = projectile.GetComponent("Projectile") as Projectile;
 		p.targetPos = realDest;
-
-
 	}
 }
