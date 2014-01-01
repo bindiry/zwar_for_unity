@@ -4,20 +4,23 @@ using System.Collections;
 public class Monster : MonoBehaviour
 {
 	private float moveSpeed;
-	// Use this for initialization
+
 	void Start ()
 	{
-		moveSpeed = Random.Range (50, 100) + Time.time * 2;
+		MainCamera mainCamera = GameObject.Find("MainCamera").GetComponent("MainCamera") as MainCamera;
+		moveSpeed = Random.Range (80, 200) + mainCamera.gameTime * 5;
+		print (mainCamera.gameTime * 5);
 	}
 
-	// Update is called once per frame
 	void Update ()
 	{
 		transform.Translate (-moveSpeed * Time.deltaTime, 0, 0);
 		
 		if (transform.position.x <= -this.renderer.bounds.size.x / 2)
 		{
-			// change scene
+			MainCamera mainCamera = GameObject.Find("MainCamera").GetComponent("MainCamera") as MainCamera;
+			mainCamera.resetTime();
+
 			Score score = GameObject.Find("Score").GetComponent("Score") as Score;
 			PlayerPrefs.SetInt("score", score.score);
 			Application.LoadLevel("ResultScene");

@@ -6,12 +6,11 @@ public class Projectile : MonoBehaviour {
 	private Vector3 _targetPos;
 
 	private float moveSpeed;
-	// Use this for initialization
+
 	void Start () {
 		moveSpeed = 500;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if (_targetPos.x != 0)
 		{

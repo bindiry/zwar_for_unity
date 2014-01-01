@@ -3,14 +3,12 @@ using System.Collections;
 
 public class ResultCamera : MonoBehaviour {
 
-	// Use this for initialization
 	void Start () {
 		Score score = GameObject.Find("Score").GetComponent("Score") as Score;
 		score.score = PlayerPrefs.GetInt("score");
 		PlayerPrefs.DeleteKey("score");
 	}
 	
-	// Update is called once per frame
 	void Update () {
 	
 	}

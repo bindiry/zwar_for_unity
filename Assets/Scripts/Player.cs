@@ -5,11 +5,9 @@ public class Player : MonoBehaviour {
 
 	public GameObject ProjectilePrefab;
 
-	// Use this for initialization
 	void Start () {
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -17,13 +15,24 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		if (collider.gameObject.name == "Monster(Clone)")
+		{
+			MainCamera mainCamera = GameObject.Find("MainCamera").GetComponent("MainCamera") as MainCamera;
+			mainCamera.resetTime();
+
+			Score score = GameObject.Find("Score").GetComponent("Score") as Score;
+			PlayerPrefs.SetInt("score", score.score);
+			Application.LoadLevel("ResultScene");
+		}
+		
+	}
+
 	void AddProjectile()
 	{
-		// get Projectile start position
 		Vector3 startPos = new Vector3(this.transform.position.x, this.transform.position.y);
-		// get mouse position
 		Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
-		// get distance
 		Vector3 distance = new Vector3(mousePos.x - startPos.x, mousePos.y - startPos.y);
 
 		if (distance.x <= 0) return;
