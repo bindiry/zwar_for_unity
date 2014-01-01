@@ -8,7 +8,6 @@ public class Monster : MonoBehaviour
 	void Start ()
 	{
 		moveSpeed = Random.Range (50, 100) + Time.time * 2;
-		print (Time.time);
 	}
 
 	// Update is called once per frame
@@ -18,6 +17,10 @@ public class Monster : MonoBehaviour
 		
 		if (transform.position.x <= -this.renderer.bounds.size.x / 2)
 		{
+			// change scene
+			Score score = GameObject.Find("Score").GetComponent("Score") as Score;
+			PlayerPrefs.SetInt("score", score.score);
+			Application.LoadLevel("ResultScene");
 			Destroy(this.gameObject);
 		}
 	}

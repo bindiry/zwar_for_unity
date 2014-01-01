@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 
-	public Vector3 targetPos;
+	private Vector3 _targetPos;
 
 	private float moveSpeed;
 	// Use this for initialization
@@ -13,9 +13,9 @@ public class Projectile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (targetPos != null)
+		if (_targetPos.x != 0)
 		{
-			transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+			transform.position = Vector3.MoveTowards(transform.position, _targetPos, moveSpeed * Time.deltaTime);
 		}
 
 		if (this.transform.position.x >= Screen.width + this.renderer.bounds.size.x / 2)
@@ -28,9 +28,17 @@ public class Projectile : MonoBehaviour {
 	{
 		if (collider.gameObject.name == "Monster(Clone)")
 		{
+			// add score
+			Score score = GameObject.Find("Score").GetComponent("Score") as Score;
+			score.score += 1;
 			Destroy(collider.gameObject);
 			Destroy(this.gameObject);
 		}
 
+	}
+
+	public Vector3 targetPos 
+	{
+		set { _targetPos = value; }
 	}
 }
