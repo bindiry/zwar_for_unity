@@ -10,3 +10,5 @@ ZWar Game for Unity
 - 当怪物碰到主角或者有一个没有打死，则进入结果界面，显示杀掉的怪物数。
 
 ![屏幕截图](https://raw.github.com/bindiry/zwar_for_unity/master/screenshot.png)
+
+[在线试玩](http://junnan.org/games/zwar/zwar.html)
