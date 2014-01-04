@@ -9,7 +9,6 @@ public class Monster : MonoBehaviour
 	{
 		MainCamera mainCamera = GameObject.Find("MainCamera").GetComponent("MainCamera") as MainCamera;
 		moveSpeed = Random.Range (80, 200) + mainCamera.gameTime * 5;
-		print (mainCamera.gameTime * 5);
 	}
 
 	void Update ()
